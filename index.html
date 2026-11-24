@@ -5,7 +5,7 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#101a18;color:#eee8d7;font:15px system-ui}header,main{max-width:1500px;margin:auto;padding:16px 24px}header{display:flex;align-items:baseline;gap:20px}h1{font:30px Georgia;margin:0;color:#ebcb8d}small{color:#aabbb1}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:10px}button,input{border:1px solid #627768;border-radius:5px;padding:9px 14px;font:inherit;background:#233a30;color:#fff}button{cursor:pointer}button:hover{background:#3c5845}button:disabled{opacity:.4;cursor:default}input{width:150px;text-transform:uppercase;background:#182a24}#stage{position:relative;background:#080d0c;aspect-ratio:16/9;max-height:80vh;margin:auto}canvas{display:block;width:100%;height:100%}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:15px}progress{width:280px;accent-color:#e3bd77}#status,#stats,#feedback{margin:9px 0;min-height:20px}#code{font-weight:bold;color:#efd18d;user-select:all}details{margin:12px 0;color:#c3cfc4}a{color:#efd18d}
 </style>
-<header><h1>Hearthbound</h1><small>Browser co-op playtest · Desktop Chrome</small></header>
+<header><h1>Hearthbound</h1><small>Alder Valley · Environment update · Desktop Chrome</small></header>
 <main><div class="bar">
 <button id="enter" disabled>Enter village</button><button id="host" disabled>Host co-op</button>
 <input id="joinCode" aria-label="Join code" placeholder="Join code" maxlength="12" autocomplete="off"><button id="join" disabled>Join friend</button>
@@ -13,15 +13,18 @@
 <button id="save" disabled>Save campaign</button><button id="load" disabled>Load campaign</button>
 </div><div id="status" role="status">Loading the game…</div><div id="stats"></div>
 <div id="stage"><canvas id="game" width="1280" height="720" tabindex="0" aria-label="Hearthbound game"></canvas><div id="loading"><strong>Preparing your settlement</strong><progress id="progress" max="1" value="0"></progress><span>The first visit downloads the game. Please keep this page open.</span></div></div>
-<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>Click a villager to select them. E takes direct control; WASD moves; Tab returns to settlement view. B toggles building; 1–8 selects a building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
+<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>A crown marks each settlement's leader. Press L to find your leader. Click a villager to select them. E takes direct control; WASD moves; Tab returns to settlement view. Scroll to zoom. Hold the middle mouse button and drag to orbit and tilt the camera. Hold Shift with WASD to move the settlement camera faster. B toggles building; 1–8 selects a building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
 <script>
 let unity;
 const $=id=>document.getElementById(id);
+$('game').addEventListener('mousedown',e=>{if(e.button===1)e.preventDefault();$('game').focus();});
+$('game').addEventListener('wheel',e=>e.preventDefault(),{passive:false});
+$('game').addEventListener('contextmenu',e=>e.preventDefault());
 const send=(method,value='')=>{if(unity)unity.SendMessage('Browser controls',method,value);};
 window.hearthboundStatus=s=>{
  $('status').textContent=s.message;
  $('code').textContent=s.code?'Join code: '+s.code:'';
- $('stats').textContent=`${s.settlement} · ${s.people} people across both settlements · ${s.buildings} buildings · ${s.sites} construction sites · Food ${s.food} · Timber ${s.timber}`;
+ $('stats').textContent=`${s.settlement} · Leader: ${s.leader} · ${s.people} people · ${s.buildings} buildings · ${s.sites} construction sites · Food ${s.food} · Timber ${s.timber}`;
  $('feedback').textContent=s.feedback;
  $('host').disabled=!s.ready||s.busy||s.online;
  $('join').disabled=!s.ready||s.busy||s.online;
@@ -36,9 +39,9 @@ $('leave').onclick=()=>send('Leave');$('enter').onclick=()=>{send('EnterVillage'
 $('save').onclick=()=>send('Save');$('load').onclick=()=>send('Load');
 $('joinCode').onfocus=()=>send('TextFocus','1');$('joinCode').onblur=()=>send('TextFocus','0');
 $('joinCode').onkeydown=e=>{if(e.key==='Enter'){$('joinCode').blur();$('join').click();}};
-const script=document.createElement('script');script.src='Build/Web.loader.js';
+const script=document.createElement('script');script.src='Build/4a8324f414a9d36ff5a6cdd74214244a.loader.js';
 script.onload=()=>createUnityInstance($('game'),{
- dataUrl:'Build/Web.data.unityweb',frameworkUrl:'Build/Web.framework.js.unityweb',codeUrl:'Build/Web.wasm.unityweb',
+ dataUrl:'Build/73ee976ee1eff1865776db3213404860.data.unityweb',frameworkUrl:'Build/aa32da8807ea4f763a428006868bcf59.framework.js.unityweb',codeUrl:'Build/e7fee549bc49e6594ea0d7c14f780f82.wasm.unityweb',
  streamingAssetsUrl:'StreamingAssets',companyName:'Hearthbound',productName:'Hearthbound',productVersion:'0.1',
  matchWebGLToCanvasSize:true,devicePixelRatio:Math.min(window.devicePixelRatio,1.5),
  showBanner:(message,type)=>{if(type==='error'){$('status').textContent=message;}}
