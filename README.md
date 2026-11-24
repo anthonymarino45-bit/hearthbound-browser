@@ -13,3 +13,6 @@ The host can save both settlements in their browser. Leave co-op before loading.
 The November 24 environment update adds wooded hills, a river, textured ground, wind-blown foliage, and Kimodo idle/walk animation for all 16 race/body models. Grounding is corrected and both co-op players retain their chosen leader race.
 
 Two isolated Chrome clients passed real Relay hosting/joining, separate settlements, selected races, direct control, camera input, save and restore with zero errors on November 24, 2026. The public address is https://anthonymarino45-bit.github.io/hearthbound-browser/ . A test between separate physical computers remains useful.
+
+The camera and orders update uses a normalized wheel step for 20 percent zoom per detent. In settlement view, left-click your unit and right-click walkable ground to move it; duties resume on arrival. Middle-mouse drag orbits. Tab returns from direct control and keeps keyboard focus inside the game. Both players must refresh before joining protocol hearthbound-6.
+

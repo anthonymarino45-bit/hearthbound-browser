@@ -13,13 +13,14 @@
 <button id="save" disabled>Save campaign</button><button id="load" disabled>Load campaign</button>
 </div><div id="status" role="status">Loading the game…</div><div id="stats"></div>
 <div id="stage"><canvas id="game" width="1280" height="720" tabindex="0" aria-label="Hearthbound game"></canvas><div id="loading"><strong>Preparing your settlement</strong><progress id="progress" max="1" value="0"></progress><span>The first visit downloads the game. Please keep this page open.</span></div></div>
-<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>A crown marks each settlement's leader. Press L to find your leader. Click a villager to select them. E takes direct control; WASD moves; Tab returns to settlement view. Scroll to zoom. Hold the middle mouse button and drag to orbit and tilt the camera. Hold Shift with WASD to move the settlement camera faster. B toggles building; 1–8 selects a building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
+<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>A crown marks each settlement's leader. Press L to find your leader. Click a villager to select them, then right-click the ground to move them in settlement view. Workers resume their duties on arrival. E takes direct control; WASD moves; Tab returns to settlement view. Scroll to zoom. Hold the middle mouse button and drag to orbit and tilt the camera. Hold Shift with WASD to move the settlement camera faster. B toggles building; 1–8 selects a building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
 <script>
 let unity;
 const $=id=>document.getElementById(id);
 $('game').addEventListener('mousedown',e=>{if(e.button===1)e.preventDefault();$('game').focus();});
 $('game').addEventListener('wheel',e=>e.preventDefault(),{passive:false});
 $('game').addEventListener('contextmenu',e=>e.preventDefault());
+$('game').addEventListener('keydown',e=>{if(e.key==='Tab')e.preventDefault();});
 const send=(method,value='')=>{if(unity)unity.SendMessage('Browser controls',method,value);};
 window.hearthboundStatus=s=>{
  $('status').textContent=s.message;
@@ -33,15 +34,17 @@ window.hearthboundStatus=s=>{
  $('save').disabled=!s.canSave;
  $('load').disabled=!s.ready||s.busy||s.online;
  document.body.dataset.owner=s.owner;document.body.dataset.elapsed=s.elapsed;
+ document.body.dataset.cameraDistance=s.cameraDistance;document.body.dataset.selected=s.selected;
+ document.body.dataset.selectedX=s.selectedX;document.body.dataset.selectedZ=s.selectedZ;document.body.dataset.moving=s.moving;
 };
 $('host').onclick=()=>send('Host');$('join').onclick=()=>send('Join',$('joinCode').value);
 $('leave').onclick=()=>send('Leave');$('enter').onclick=()=>{send('EnterVillage');$('game').focus();};
 $('save').onclick=()=>send('Save');$('load').onclick=()=>send('Load');
 $('joinCode').onfocus=()=>send('TextFocus','1');$('joinCode').onblur=()=>send('TextFocus','0');
 $('joinCode').onkeydown=e=>{if(e.key==='Enter'){$('joinCode').blur();$('join').click();}};
-const script=document.createElement('script');script.src='Build/4a8324f414a9d36ff5a6cdd74214244a.loader.js';
+const script=document.createElement('script');script.src='Build/0d4fea03d678630f0a81f2d2ab9e5e0a.loader.js';
 script.onload=()=>createUnityInstance($('game'),{
- dataUrl:'Build/73ee976ee1eff1865776db3213404860.data.unityweb',frameworkUrl:'Build/aa32da8807ea4f763a428006868bcf59.framework.js.unityweb',codeUrl:'Build/e7fee549bc49e6594ea0d7c14f780f82.wasm.unityweb',
+ dataUrl:'Build/009b73f9712d3c3ed85990065d454fd7.data.unityweb',frameworkUrl:'Build/aa32da8807ea4f763a428006868bcf59.framework.js.unityweb',codeUrl:'Build/fa90d46fca099b1f47556be5c03df55b.wasm.unityweb',
  streamingAssetsUrl:'StreamingAssets',companyName:'Hearthbound',productName:'Hearthbound',productVersion:'0.1',
  matchWebGLToCanvasSize:true,devicePixelRatio:Math.min(window.devicePixelRatio,1.5),
  showBanner:(message,type)=>{if(type==='error'){$('status').textContent=message;}}
