@@ -16,3 +16,5 @@ Two isolated Chrome clients passed real Relay hosting/joining, separate settleme
 
 The camera and orders update uses a normalized wheel step for 20 percent zoom per detent. In settlement view, left-click your unit and right-click walkable ground to move it; duties resume on arrival. Middle-mouse drag orbits. Tab returns from direct control and keeps keyboard focus inside the game. Both players must refresh before joining protocol hearthbound-6.
 
+
+The realistic forest update replaces every low-poly oak and pine with the detailed branched oak and its leaf sprays, including the trees on the distant hills. Press Ctrl+Shift+R once to load it.
