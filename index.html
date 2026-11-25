@@ -42,9 +42,9 @@ $('leave').onclick=()=>send('Leave');$('enter').onclick=()=>{send('EnterVillage'
 $('save').onclick=()=>send('Save');$('load').onclick=()=>send('Load');
 $('joinCode').onfocus=()=>send('TextFocus','1');$('joinCode').onblur=()=>send('TextFocus','0');
 $('joinCode').onkeydown=e=>{if(e.key==='Enter'){$('joinCode').blur();$('join').click();}};
-const script=document.createElement('script');script.src='Build/049ab837f86c9943f1ebdc78e610b0a0.loader.js';
+const script=document.createElement('script');script.src='Build/fbffd0f7e144198675d409b3a7bd5b20.loader.js';
 script.onload=()=>createUnityInstance($('game'),{
- dataUrl:'Build/54288286a8c87c6d8bbb45b3d5384fd6.data.unityweb',frameworkUrl:'Build/3adfdbc06a087c6e1ec82a8a70deb8d0.framework.js.unityweb',codeUrl:'Build/f947302cfb5a66ff73ebe8904e645ecc.wasm.unityweb',
+ dataUrl:'Build/83d0044a36061093c515eb3d284c69c8.data.unityweb',frameworkUrl:'Build/9c016ee157ae3bbcbb1d2b491e6936e8.framework.js.unityweb',codeUrl:'Build/94dead3dbce9b8847727a1eac7182921.wasm.unityweb',
  streamingAssetsUrl:'StreamingAssets',companyName:'Hearthbound',productName:'Hearthbound',productVersion:'0.1',
  matchWebGLToCanvasSize:true,devicePixelRatio:Math.min(window.devicePixelRatio,1.5),
  showBanner:(message,type)=>{if(type==='error'){$('status').textContent=message;}}
