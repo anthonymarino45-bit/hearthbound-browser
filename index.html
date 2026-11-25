@@ -13,7 +13,7 @@
 <button id="save" disabled>Save campaign</button><button id="load" disabled>Load campaign</button>
 </div><div id="status" role="status">Loading the game…</div><div id="stats"></div>
 <div id="stage"><canvas id="game" width="1280" height="720" tabindex="0" aria-label="Hearthbound game"></canvas><div id="loading"><strong>Preparing your settlement</strong><progress id="progress" max="1" value="0"></progress><span>The first visit downloads the game. Please keep this page open.</span></div></div>
-<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>A crown marks each settlement's leader. Press L to find your leader. Click a villager to select them, then right-click the ground to move them in settlement view. Workers resume their duties on arrival. E takes direct control; WASD moves; Tab returns to settlement view. Scroll to zoom. Hold the middle mouse button and drag to orbit and tilt the camera. Hold Shift with WASD to move the settlement camera faster. B toggles building; 1–8 selects a building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
+<div id="feedback"></div><details><summary>Controls and co-op help</summary><p>Choose your leader in the game, then enter the village. Host co-op and share the join code. Your friend opens this same web address and chooses Join friend. Each player controls their own settlement.</p><p>A crown marks each settlement's leader. Press L to find your leader. Click a villager to select them, then right-click the ground to move them in settlement view. Workers resume their duties on arrival. E takes direct control; WASD moves; Tab returns to settlement view. Scroll to zoom. Hold the middle mouse button and drag to orbit and tilt the camera. Hold Shift with WASD to move the settlement camera faster. Press B (or the Build button) to open the building menu, pick a building or press 1–8, then click open ground to place it. A green preview means the spot is valid; red shows the reason. Right-click or Esc stops building. Keep the host's page open and visible during play. The host saves both settlements in this browser; leave co-op before loading. Clearing browser data removes browser saves.</p></details></main>
 <script>
 let unity;
 const $=id=>document.getElementById(id);
@@ -42,9 +42,9 @@ $('leave').onclick=()=>send('Leave');$('enter').onclick=()=>{send('EnterVillage'
 $('save').onclick=()=>send('Save');$('load').onclick=()=>send('Load');
 $('joinCode').onfocus=()=>send('TextFocus','1');$('joinCode').onblur=()=>send('TextFocus','0');
 $('joinCode').onkeydown=e=>{if(e.key==='Enter'){$('joinCode').blur();$('join').click();}};
-const script=document.createElement('script');script.src='Build/d0ca1a07c75318c4ecbed38b0169222c.loader.js';
+const script=document.createElement('script');script.src='Build/c66c543d8579d43d68fbd5015229a7e4.loader.js';
 script.onload=()=>createUnityInstance($('game'),{
- dataUrl:'Build/73c85404933ac3e0f707ae7cf192a658.data.unityweb',frameworkUrl:'Build/aa32da8807ea4f763a428006868bcf59.framework.js.unityweb',codeUrl:'Build/0e40b776ab14cc2abb5a0bd74752fc89.wasm.unityweb',
+ dataUrl:'Build/8a1eb00c5fe91862cc979a68ae823434.data.unityweb',frameworkUrl:'Build/3adfdbc06a087c6e1ec82a8a70deb8d0.framework.js.unityweb',codeUrl:'Build/f17f1deff7196e35b6d447644eaa2435.wasm.unityweb',
  streamingAssetsUrl:'StreamingAssets',companyName:'Hearthbound',productName:'Hearthbound',productVersion:'0.1',
  matchWebGLToCanvasSize:true,devicePixelRatio:Math.min(window.devicePixelRatio,1.5),
  showBanner:(message,type)=>{if(type==='error'){$('status').textContent=message;}}
