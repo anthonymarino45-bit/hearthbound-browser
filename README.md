@@ -20,3 +20,5 @@ The camera and orders update uses a normalized wheel step for 20 percent zoom pe
 The realistic forest update replaces every low-poly oak and pine with the detailed branched oak and its leaf sprays, including the trees on the distant hills. Press Ctrl+Shift+R once to load it.
 
 The buildings and construction update replaces the plain block buildings with detailed timber-frame architecture (stone footings, framing, plaster and board walls, shingled roofs, shuttered windows, chimneys) and makes building simple: press B or click Build, pick a building from the menu, and click open ground. A green preview means the spot is fine; red explains why not. Sites rise visibly from staked ropes to finished roof. Press Ctrl+Shift+R once to load it.
+
+The atmosphere update adds a full day: sunrise, golden-hour evenings and a moonlit blue night, with candlelight in the windows after dark. Homes now vary between shingled and thatched roofs, white, ochre and rose limewash, and a single-storey thatched cottage. The interface uses clean black panels with white text, and each settlement is now a single people that follows its leader's race. Press Ctrl+Shift+R once to load it.

@@ -3,7 +3,7 @@
 <title>Hearthbound · Browser Playtest</title>
 <link rel="icon" href="data:,">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#101a18;color:#eee8d7;font:15px system-ui}header,main{max-width:1500px;margin:auto;padding:16px 24px}header{display:flex;align-items:baseline;gap:20px}h1{font:30px Georgia;margin:0;color:#ebcb8d}small{color:#aabbb1}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:10px}button,input{border:1px solid #627768;border-radius:5px;padding:9px 14px;font:inherit;background:#233a30;color:#fff}button{cursor:pointer}button:hover{background:#3c5845}button:disabled{opacity:.4;cursor:default}input{width:150px;text-transform:uppercase;background:#182a24}#stage{position:relative;background:#080d0c;aspect-ratio:16/9;max-height:80vh;margin:auto}canvas{display:block;width:100%;height:100%}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:15px}progress{width:280px;accent-color:#e3bd77}#status,#stats,#feedback{margin:9px 0;min-height:20px}#code{font-weight:bold;color:#efd18d;user-select:all}details{margin:12px 0;color:#c3cfc4}a{color:#efd18d}
+*{box-sizing:border-box}body{margin:0;background:#0a0a0b;color:#f2f2f2;font:15px system-ui}header,main{max-width:1500px;margin:auto;padding:16px 24px}header{display:flex;align-items:baseline;gap:20px}h1{font:30px Georgia;margin:0;color:#fff}small{color:#9a9a9e}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:10px}button,input{border:1px solid #2e2e31;border-radius:6px;padding:9px 14px;font:inherit;background:#161618;color:#fff}button{cursor:pointer}button:hover{background:#2a2a2d;border-color:#4a4a4e}button:disabled{opacity:.4;cursor:default}input{width:150px;text-transform:uppercase;background:#0f0f10}#stage{position:relative;background:#050505;aspect-ratio:16/9;max-height:80vh;margin:auto}canvas{display:block;width:100%;height:100%}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:15px}progress{width:280px;accent-color:#e8e8e8}#status,#stats,#feedback{margin:9px 0;min-height:20px}#code{font-weight:bold;color:#fff;user-select:all}details{margin:12px 0;color:#b8b8bc}a{color:#fff}
 </style>
 <header><h1>Hearthbound</h1><small>Alder Valley · Environment update · Desktop Chrome</small></header>
 <main><div class="bar">
@@ -42,9 +42,9 @@ $('leave').onclick=()=>send('Leave');$('enter').onclick=()=>{send('EnterVillage'
 $('save').onclick=()=>send('Save');$('load').onclick=()=>send('Load');
 $('joinCode').onfocus=()=>send('TextFocus','1');$('joinCode').onblur=()=>send('TextFocus','0');
 $('joinCode').onkeydown=e=>{if(e.key==='Enter'){$('joinCode').blur();$('join').click();}};
-const script=document.createElement('script');script.src='Build/c66c543d8579d43d68fbd5015229a7e4.loader.js';
+const script=document.createElement('script');script.src='Build/049ab837f86c9943f1ebdc78e610b0a0.loader.js';
 script.onload=()=>createUnityInstance($('game'),{
- dataUrl:'Build/8a1eb00c5fe91862cc979a68ae823434.data.unityweb',frameworkUrl:'Build/3adfdbc06a087c6e1ec82a8a70deb8d0.framework.js.unityweb',codeUrl:'Build/f17f1deff7196e35b6d447644eaa2435.wasm.unityweb',
+ dataUrl:'Build/54288286a8c87c6d8bbb45b3d5384fd6.data.unityweb',frameworkUrl:'Build/3adfdbc06a087c6e1ec82a8a70deb8d0.framework.js.unityweb',codeUrl:'Build/f947302cfb5a66ff73ebe8904e645ecc.wasm.unityweb',
  streamingAssetsUrl:'StreamingAssets',companyName:'Hearthbound',productName:'Hearthbound',productVersion:'0.1',
  matchWebGLToCanvasSize:true,devicePixelRatio:Math.min(window.devicePixelRatio,1.5),
  showBanner:(message,type)=>{if(type==='error'){$('status').textContent=message;}}
